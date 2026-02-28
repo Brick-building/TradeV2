@@ -121,7 +121,7 @@ class KalshiClient:
         msg = ts + method.upper() + path + body
         if self._private_key is None:
             return {}
-        sig = self._private_key.sign(msg.encode(), padding.PKCS1v15(), hashes.SHA256())
+        sig = self._private_key.sign(msg.encode(), padding.PSS(mgf=padding.MGF1(hashes.SHA256()), salt_length=padding.PSS.MAX_LENGTH), hashes.SHA256())
         return {
             "KALSHI-ACCESS-KEY": self.key_id,
             "KALSHI-ACCESS-TIMESTAMP": ts,
