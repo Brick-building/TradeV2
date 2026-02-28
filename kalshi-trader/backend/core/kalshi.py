@@ -177,7 +177,7 @@ class KalshiClient:
             "count": count,
             "type": order_type,
             "yes_price": price_cents if side == "yes" else 100 - price_cents,
-            "no_price": price_cents if side == "no" else 100 - price_cents,
+            #"no_price": price_cents if side == "no" else 100 - price_cents,
         }
         body = json.dumps(body_dict)
         headers = {**self._sign("POST", f"/trade-api/v2{path}", body), "Content-Type": "application/json"}
