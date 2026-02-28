@@ -1,0 +1,93 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #09090b;
+  --bg1: #0f0f12;
+  --bg2: #141418;
+  --bg3: #1c1c22;
+  --border: #2a2a35;
+  --border-bright: #3d3d50;
+
+  --text: #e8e8f0;
+  --text2: #8888aa;
+  --text3: #55556a;
+
+  --green: #00ff88;
+  --green-dim: #00cc66;
+  --green-bg: rgba(0,255,136,0.06);
+  --red: #ff3355;
+  --red-dim: #cc2244;
+  --red-bg: rgba(255,51,85,0.06);
+  --yellow: #ffcc00;
+  --yellow-bg: rgba(255,204,0,0.06);
+  --blue: #4488ff;
+  --blue-bg: rgba(68,136,255,0.06);
+
+  --mono: 'Share Tech Mono', monospace;
+  --cond: 'Barlow Condensed', sans-serif;
+  --body: 'Barlow', sans-serif;
+
+  --radius: 2px;
+}
+
+html, body, #root {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg1); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+/* Scanline overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+button {
+  font-family: var(--mono);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input, select, textarea {
+  font-family: var(--mono);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: var(--radius);
+  outline: none;
+}
+
+input:focus, select:focus { border-color: var(--blue); }
+
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+@keyframes slide-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
